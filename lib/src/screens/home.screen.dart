@@ -10,6 +10,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "🐾 Dog App 🐾",
+          style: TextStyle(fontFamily: "Poppins", color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
+      ),
+    );
   }
 }

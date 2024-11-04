@@ -1,0 +1,6 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_Us", "es", "dart"],
+  "ignoreWords": ["dotenv"]
+}
