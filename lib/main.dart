@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:dog_app/src/screens/home.screen.dart';
-import "package:dog_app/src/config/env.config.dart";
+import "package:flutter/material.dart";
+import "package:dog_app/src/screens/home.screen.dart";
+import "package:dog_app/src/config/env/global-env.config.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Config.load();
+  await EnvConfig.load();
 
   runApp(const MainApp());
 }
@@ -14,7 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        title: "Dog App", debugShowCheckedModeBanner: false, home: Home());
+    return MaterialApp(
+        title: EnvConfig.appEnvConfig.name,
+        debugShowCheckedModeBanner: false,
+        home: const Home());
   }
 }

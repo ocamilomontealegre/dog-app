@@ -1,1 +1,10 @@
+linter:
+  rules:
+    avoid_print: true
+    always_declare_return_types: true
+    prefer_final_fields: true
+    prefer_const_constructors: true
+    prefer_double_quotes: true
+    unnecessary_this: true
+
 include: package:flutter_lints/flutter.yaml
