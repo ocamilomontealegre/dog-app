@@ -1,0 +1,1 @@
+enum EndpointResources { images, breeds }

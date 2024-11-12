@@ -2,5 +2,9 @@
   "app": {
     "APP_NAME": "Dog App",
     "APP_VERSION": "1.0.0"
+  },
+  "dog-api": {
+    "BASE_URL": "https://api.thedogapi.com/v1/",
+    "KEY": "live_d4dCNvnUSQCPuqv55RkbTtZtV1kokKbh5HCtMreDRSfEliOdIYkqTeiDYTZ8u7O3"
   }
 }

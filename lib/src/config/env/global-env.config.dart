@@ -5,9 +5,11 @@ import "package:flutter/foundation.dart";
 import "package:flutter/services.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "app-env.config.dart";
+import "dog-api-env.config.dart";
 
 class EnvConfig {
   static late AppEnvConfig appEnvConfig;
+  static late DogApiEnvConfig dogApiEnvConfig;
 
   static Future<void> load() async {
     if (Platform.isAndroid || Platform.isIOS) {
@@ -34,6 +36,10 @@ class EnvConfig {
       appEnvConfig = AppEnvConfig(
           name: config["app"]["APP_NAME"],
           version: config["app"]["APP_VERSION"]);
+
+      dogApiEnvConfig = DogApiEnvConfig(
+          baseUrl: config["dog-api"]["BASE_URL"],
+          key: config["dog-api"]["KEY"]);
     } catch (e) {
       print("Error loading web config $e");
     }
