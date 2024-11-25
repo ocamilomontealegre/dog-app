@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:http/http.dart" as http;
 import "package:dog_app/src/services/fetch.dart";
 import "package:dog_app/src/common/models/breed.model.dart";
 
@@ -11,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late Future<http.Response> futureList;
+  late Future<List<Breed>> futureList;
 
   @override
   void initState() {
@@ -29,16 +28,23 @@ class _HomeState extends State<Home> {
           ),
           backgroundColor: Colors.blue,
         ),
-        body: FutureBuilder<http.Response>(
+        body: FutureBuilder<List<Breed>>(
             future: futureList,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                print(snapshot.data);
-              } else if (snapshot.hasError) {
-                print(snapshot.error);
+            builder: (BuildContext context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
               }
-
-              return const CircularProgressIndicator();
+              if (snapshot.hasError) {
+                return Center(child: Text("Error: ${snapshot.error}"));
+              }
+              if (snapshot.hasData) {
+                return ListView.builder(itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(snapshot.data![index].name),
+                  );
+                });
+              }
+              return const Center(child: Text("Not breeds found"));
             }));
   }
 }
